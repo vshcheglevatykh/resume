@@ -9,6 +9,10 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
 
+        /* Прячем ползунок скролла для пилюль на мобильных */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
         /* --- СТИЛИ ДЛЯ КАРТОЧЕК КЕЙСОВ --- */
         .portfolio-grid {
             display: grid;
@@ -51,18 +55,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .tag {
-            display: inline-block;
-            background-color: #111827;
-            color: #ffffff;
-            font-size: 12px;
-            font-weight: 700;
-            padding: 6px 14px;
-            border-radius: 8px;
-            letter-spacing: 0.02em;
-            text-transform: uppercase;
         }
 
         .case-arrow {
@@ -140,18 +132,21 @@
         .footer-logo {
             width: 36px;
             height: 36px;
-            background: #E5E7EB;
-            border: 1px solid #D1D5DB;
+            background: #ffffff;
+            border: 1px solid #E5E7EB;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 9px;
-            font-weight: 600;
-            color: #4B5563;
-            text-transform: uppercase;
             flex-shrink: 0;
             overflow: hidden;
+            padding: 4px;
+        }
+        
+        .footer-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         .footer-meta {
@@ -187,37 +182,29 @@
                     ВАДИМ<br />ЩЕГЛЕВАТЫХ
                 </h1>
                 
-                <div class="flex flex-wrap gap-3 max-w-[650px] mb-10">
-                    <div class="flex items-center gap-2.5 bg-slate-50 text-slate-950 px-6 py-3 rounded-full font-bold text-sm md:text-base cursor-default">
+                <div class="flex gap-3 max-w-[650px] mb-10 overflow-x-auto whitespace-nowrap hide-scrollbar pb-2">
+                    <div class="shrink-0 flex items-center gap-2.5 bg-slate-50 text-slate-950 px-6 py-3 rounded-full font-bold text-sm md:text-base cursor-default">
                         <svg class="w-5 h-5 md:w-6 md:h-6 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                        <span>GTM-стратегия</span>
+                        <span>Монетизация</span>
                     </div>
-                    <div class="flex items-center gap-2.5 bg-slate-50 text-slate-950 px-6 py-3 rounded-full font-bold text-sm md:text-base cursor-default">
+                    <div class="shrink-0 flex items-center gap-2.5 bg-slate-50 text-slate-950 px-6 py-3 rounded-full font-bold text-sm md:text-base cursor-default">
                         <svg class="w-5 h-5 md:w-6 md:h-6 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
-                        <span>Growth</span>
+                        <span>Запуск продуктов</span>
                     </div>
-                    <div class="flex items-center gap-2.5 bg-slate-50 text-slate-950 px-6 py-3 rounded-full font-bold text-sm md:text-base cursor-default">
+                    <div class="shrink-0 flex items-center gap-2.5 bg-slate-50 text-slate-950 px-6 py-3 rounded-full font-bold text-sm md:text-base cursor-default">
                         <svg class="w-5 h-5 md:w-6 md:h-6 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                        <span>Юнит-экономика</span>
-                    </div>
-                    <div class="flex items-center gap-2.5 bg-slate-50 text-slate-950 px-6 py-3 rounded-full font-bold text-sm md:text-base cursor-default">
-                        <svg class="w-5 h-5 md:w-6 md:h-6 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" /></svg>
-                        <span>UX-оптимизация</span>
-                    </div>
-                    <div class="flex items-center gap-2.5 bg-slate-50 text-slate-950 px-6 py-3 rounded-full font-bold text-sm md:text-base cursor-default">
-                        <svg class="w-5 h-5 md:w-6 md:h-6 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" /></svg>
-                        <span>A/B тесты</span>
+                        <span>Growth-маркетинг</span>
                     </div>
                 </div>
                 
                 <p class="text-xl md:text-2xl text-slate-700 leading-relaxed max-w-2xl font-medium flex-grow">
-                    <span class="font-extrabold text-slate-950">Senior Product Marketing Manager</span> с фокусом на монетизацию и рост. Строю GTM-стратегии, нахожу где продукт недозарабатывает — и это исправляю.
+                    <span class="font-extrabold text-slate-950">Senior Product Marketing Manager.</span>
                 </p>
             </div>
 
             <div class="w-48 sm:w-64 lg:w-[306px] xl:w-[357px] shrink-0 order-1 lg:order-2 mb-2 lg:mb-0">
                 <div class="w-full h-full rounded-[1.5rem] lg:rounded-[2rem] overflow-hidden bg-slate-100 border border-slate-200 shadow-sm flex items-center justify-center aspect-[3/4] lg:aspect-auto lg:min-h-[300px]">
-                    <img src="images/photo.jpg" alt="" class="w-full h-full object-cover">
+                    <img src="images/photo.jpg" alt="Вадим Щеглеватых" class="w-full h-full object-cover">
                 </div>
             </div>
 
@@ -240,7 +227,9 @@
                     <div class="flex-grow"></div>
                     
                     <div class="case-footer">
-                        <div class="footer-logo">Лого</div>
+                        <div class="footer-logo">
+                            <img src="images/Agenters.png" alt="Agenters">
+                        </div>
                         <div class="footer-meta">
                             <span class="footer-company">Agenters</span>
                             <span class="footer-separator">·</span>
@@ -259,7 +248,9 @@
                     <div class="flex-grow"></div>
 
                     <div class="case-footer">
-                        <div class="footer-logo">Лого</div>
+                        <div class="footer-logo">
+                            <img src="images/t2_Logo.png" alt="T2">
+                        </div>
                         <div class="footer-meta">
                             <span class="footer-company">T2</span>
                             <span class="footer-separator">·</span>
@@ -278,7 +269,9 @@
                     <div class="flex-grow"></div>
 
                     <div class="case-footer">
-                        <div class="footer-logo">Лого</div>
+                        <div class="footer-logo">
+                            <img src="images/pizza-hut-logo.png" alt="Pizza Hut">
+                        </div>
                         <div class="footer-meta">
                             <span class="footer-company">Pizza Hut</span>
                             <span class="footer-separator">·</span>
@@ -287,7 +280,6 @@
                     </div>
                 </a>
 
-                <!-- ОБНОВЛЕННАЯ ЧЕТВЕРТАЯ КАРТОЧКА -->
                 <a href="#" onclick="openModal('case-medi'); return false;" class="case-card">
                     <div class="case-tag-wrapper" style="justify-content: flex-end;">
                         <svg class="case-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H10M17 7V14"></path></svg>
@@ -298,7 +290,9 @@
                     <div class="flex-grow"></div>
 
                     <div class="case-footer">
-                        <div class="footer-logo">Лого</div>
+                        <div class="footer-logo">
+                            <img src="images/меди.png" alt="Медиэстетик">
+                        </div>
                         <div class="footer-meta">
                             <span class="footer-company">Медиэстетик</span>
                             <span class="footer-separator">·</span>
@@ -306,28 +300,20 @@
                         </div>
                     </div>
                 </a>
-                <!-- КОНЕЦ ОБНОВЛЕННОЙ КАРТОЧКИ -->
 
             </div>
         </div>
     </section>
 
-    <footer id="команда" class="w-full mt-auto py-16 px-6 md:px-12 bg-white border-t border-slate-100 z-10">
+    <footer id="команда" class="w-full mt-auto py-32 px-6 md:px-12 bg-[#F4F4F5] border-t border-slate-200 z-10">
         <div class="max-w-4xl mx-auto text-center flex flex-col gap-8">
-            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-950 leading-tight">
-                Ищу команду, где маркетинг работает на стыке продукта и бизнеса.
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-[#111111] leading-tight tracking-tight">
+                Давайте обсудим.
             </h2>
-            <p class="text-lg text-slate-600 leading-relaxed font-medium max-w-2xl mx-auto">
-                Комфортно в growth/performance и в продуктовых задачах — важно, чтобы работа реально двигала цифры. Буду рад пообщаться.
-            </p>
             <div class="flex flex-wrap justify-center gap-4 mt-2">
-                <a href="#" class="text-base font-bold text-white bg-slate-900 px-8 py-3.5 rounded-xl hover:bg-blue-600 transition-colors inline-flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                <a href="https://t.me/privetmiko" target="_blank" rel="noopener noreferrer" class="text-lg font-bold text-white bg-slate-900 px-10 py-4 rounded-xl hover:bg-blue-600 transition-colors inline-flex items-center gap-3">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                     Написать в Tg
-                </a>
-                <a href="#" class="text-base font-bold text-slate-900 bg-slate-50 border border-slate-200 px-8 py-3.5 rounded-xl hover:bg-slate-100 hover:border-slate-300 transition-colors inline-flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                    Резюме
                 </a>
             </div>
         </div>
@@ -347,7 +333,6 @@
         </div>
     </div>
 
-    <!-- Модалки скрыты -->
     <div id="case-b2b" data-title="Agenters: запуск кросс-продукта ОСАГО" class="hidden">
         <h4 class="text-xl font-bold text-slate-950 mb-3">Контекст</h4>
         <p class="mb-4">Мы запустили новый кросс-продукт для страховых агентов внутри B2B-платформы Agenters — дополнительную защиту к ОСАГО, которая приносила агенту до +1 050 ₽ с каждого полиса.</p>
@@ -363,7 +348,7 @@
         <p class="mb-8">Фактически продукт существовал в системе, но не влиял на поведение.</p>
 
         <h4 class="text-xl font-bold text-slate-950 mb-3">Задача</h4>
-        <p class="mb-8">Сделать так, чтобы продукт начал массово использоваться в стандартных продажах ОСАГО — без изменений основного процесса и без риска для конверсии.</p>
+        <p class="mb-8">Сделать так, чтобы продукт начал массово использоваться в стандартных продаж ОСАГО — без изменений основного процесса и без риска для конверсии.</p>
 
         <h4 class="text-xl font-bold text-slate-950 mb-4">Решение</h4>
         <p class="mb-4">Я разобрался, почему продукт не используется, и увидел три причины: его не замечают, не понимают ценность и не умеют объяснить клиенту. Вместо изменения продукта мы убрали эти барьеры:</p>
@@ -500,7 +485,6 @@
         </div>
     </div>
 
-    <!-- ОБНОВЛЕННЫЙ ТЕКСТ ЧЕТВЕРТОГО КЕЙСА -->
     <div id="case-medi" data-title="Медиэстетик: онлайн-привлечение пациентов" class="hidden">
         <h4 class="text-xl font-bold text-slate-950 mb-3">Контекст</h4>
         <p class="mb-4">Офтальмологическое направление клиники работало преимущественно через офлайн и партнёрские каналы.</p>
@@ -558,7 +542,6 @@
             <p class="text-blue-800 text-base leading-relaxed">В медицинских услугах ключевой барьер роста — не трафик, а восприятие доступности. Когда услугу правильно упаковать в понятный сценарий входа, спрос можно не генерировать, а активировать.</p>
         </div>
     </div>
-    <!-- КОНЕЦ ОБНОВЛЕННОГО ТЕКСТА ЧЕТВЕРТОГО КЕЙСА -->
 
     <script>
         function openModal(caseId) {
