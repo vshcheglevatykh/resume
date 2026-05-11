@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вадим Щеглеватых | Senior Product Marketing Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+
+        /* --- СТИЛИ ДЛЯ КАРТОЧЕК КЕЙСОВ --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .case-card {
+            background-color: #ffffff;
+            border: 2px solid #E5E7EB;
+            border-radius: 24px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-sizing: border-box;
+            min-height: 100%;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .case-card:hover {
+            border-color: #111827;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-6px);
+        }
+
+        .case-tag-wrapper {
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: #111827;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 8px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .case-arrow {
+            color: #6B7280;
+            width: 36px;
+            height: 36px;
+            background-color: #F3F4F6;
+            border-radius: 50%;
+            padding: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .case-card:hover .case-arrow {
+            background-color: #111827;
+            color: #ffffff;
+            transform: rotate(45deg);
+        }
+
+        .case-headline {
+            font-size: 26px;
+            font-weight: 900;
+            color: #111827;
+            margin: 0 0 16px 0;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+        }
+
+        .case-summary {
+            font-size: 15px;
+            color: #374151;
+            font-weight: 500;
+            margin: 0 0 24px 0;
+            line-height: 1.5;
+        }
+
+        .case-results {
+            margin: 0 0 32px 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            flex-grow: 1;
+        }
+
+        .case-results li {
+            position: relative;
+            padding-left: 32px;
+            color: #4B5563;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .case-results li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 20px;
+            height: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239CA3AF' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 13l4 4L19 7' /%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .case-footer {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: auto;
+            padding-top: 24px;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .footer-logo {
+            width: 36px;
+            height: 36px;
+            background: #E5E7EB;
+            border: 1px solid #D1D5DB;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            font-weight: 600;
+            color: #4B5563;
+            text-transform: uppercase;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .footer-meta {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            font-size: 14px;
+        }
+
+        .footer-company {
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .footer-separator {
+            color: #9CA3AF;
+            font-weight: 700;
+        }
+
+        .footer-domain {
+            color: #6B7280;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 antialiased flex flex-col min-h-screen relative overflow-x-hidden">
+
+    <header class="w-full pt-16 pb-12 px-6 md:px-12 z-10">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:items-stretch lg:justify-between gap-8 xl:gap-16">
+            
+            <div class="flex-1 flex flex-col min-w-0 order-2 lg:order-1">
+                <h1 class="text-[2.5rem] sm:text-[4.5rem] md:text-[5.4rem] lg:text-[5.4rem] xl:text-[6.6rem] 2xl:text-[7.8rem] font-black uppercase tracking-tight text-slate-950 mb-8 lg:mb-10 leading-none">
+                    ВАДИМ<br />ЩЕГЛЕВАТЫХ
+                </h1>
+                
+                <div class="flex flex-wrap gap-3 max-w-[650px] mb-10">
+                    <div class="flex items-center gap-2.5 bg-slate-50 text-slate-950 px-6 py-3 rounded-full font-bold text-sm md:text-base cursor-default">
+                        <svg class="w-5 h-5 md:w-6 md:h-6 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                        <span>GTM-стратегия</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-slate-50 text-slate-950 px-6 py-3 rounded-full font-bold text-sm md:text-base cursor-default">
+                        <svg class="w-5 h-5 md:w-6 md:h-6 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                        <span>Growth</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-slate-50 text-slate-950 px-6 py-3 rounded-full font-bold text-sm md:text-base cursor-default">
+                        <svg class="w-5 h-5 md:w-6 md:h-6 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <span>Юнит-экономика</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-slate-50 text-slate-950 px-6 py-3 rounded-full font-bold text-sm md:text-base cursor-default">
+                        <svg class="w-5 h-5 md:w-6 md:h-6 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" /></svg>
+                        <span>UX-оптимизация</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 bg-slate-50 text-slate-950 px-6 py-3 rounded-full font-bold text-sm md:text-base cursor-default">
+                        <svg class="w-5 h-5 md:w-6 md:h-6 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" /></svg>
+                        <span>A/B тесты</span>
+                    </div>
+                </div>
+                
+                <p class="text-xl md:text-2xl text-slate-700 leading-relaxed max-w-2xl font-medium flex-grow">
+                    <span class="font-extrabold text-slate-950">Senior Product Marketing Manager</span> с фокусом на монетизацию и рост. Строю GTM-стратегии, нахожу где продукт недозарабатывает — и это исправляю.
+                </p>
+            </div>
+
+            <div class="w-48 sm:w-64 lg:w-[306px] xl:w-[357px] shrink-0 order-1 lg:order-2 mb-2 lg:mb-0">
+                <div class="w-full h-full rounded-[1.5rem] lg:rounded-[2rem] overflow-hidden bg-slate-100 border border-slate-200 shadow-sm flex items-center justify-center aspect-[3/4] lg:aspect-auto lg:min-h-[300px]">
+                    <img src="images/photo.jpg" alt="" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <section id="кейсы" class="w-full py-16 px-6 md:px-12 bg-slate-50 flex-grow z-10 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold mb-10 text-slate-950">Кейсы</h2>
+            
+            <div class="portfolio-grid">
+                
+                <a href="#" onclick="openModal('case-b2b'); return false;" class="case-card">
+                    <div class="case-tag-wrapper" style="justify-content: flex-end;">
+                        <svg class="case-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H10M17 7V14"></path></svg>
+                    </div>
+                    <h3 class="case-headline">+12% выручки на запуске нового кросс-продукта</h3>
+                    <p class="case-summary">Выстроил go-to-market и довёл продукт до массового использования агентами</p>
+                    
+                    <div class="flex-grow"></div>
+                    
+                    <div class="case-footer">
+                        <div class="footer-logo">Лого</div>
+                        <div class="footer-meta">
+                            <span class="footer-company">Agenters</span>
+                            <span class="footer-separator">·</span>
+                            <span class="footer-domain">B2B страховой агрегатор</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" onclick="openModal('case-t2'); return false;" class="case-card">
+                    <div class="case-tag-wrapper" style="justify-content: flex-end;">
+                        <svg class="case-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H10M17 7V14"></path></svg>
+                    </div>
+                    <h3 class="case-headline">x5 рост конверсии при запуске страхового продукта в экосистеме T2</h3>
+                    <p class="case-summary">Вывел новый финансовый продукт на целевые KPI внутри мобильного приложения</p>
+                    
+                    <div class="flex-grow"></div>
+
+                    <div class="case-footer">
+                        <div class="footer-logo">Лого</div>
+                        <div class="footer-meta">
+                            <span class="footer-company">T2</span>
+                            <span class="footer-separator">·</span>
+                            <span class="footer-domain">телеком-оператор</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" onclick="openModal('case-pizza'); return false;" class="case-card">
+                    <div class="case-tag-wrapper" style="justify-content: flex-end;">
+                        <svg class="case-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H10M17 7V14"></path></svg>
+                    </div>
+                    <h3 class="case-headline">+37,5% конверсии сайта доставки</h3>
+                    <p class="case-summary">Построил систему роста собственной доставки через CRM, оффер и оптимизацию воронки</p>
+                    
+                    <div class="flex-grow"></div>
+
+                    <div class="case-footer">
+                        <div class="footer-logo">Лого</div>
+                        <div class="footer-meta">
+                            <span class="footer-company">Pizza Hut</span>
+                            <span class="footer-separator">·</span>
+                            <span class="footer-domain">доставка еды</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- ОБНОВЛЕННАЯ ЧЕТВЕРТАЯ КАРТОЧКА -->
+                <a href="#" onclick="openModal('case-medi'); return false;" class="case-card">
+                    <div class="case-tag-wrapper" style="justify-content: flex-end;">
+                        <svg class="case-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H10M17 7V14"></path></svg>
+                    </div>
+                    <h3 class="case-headline">+41% выручки направления офтальмологии</h3>
+                    <p class="case-summary">Переупаковал офлайн-медицинскую клинику в digital-воронку и запустил онлайн-привлечение пациентов</p>
+                    
+                    <div class="flex-grow"></div>
+
+                    <div class="case-footer">
+                        <div class="footer-logo">Лого</div>
+                        <div class="footer-meta">
+                            <span class="footer-company">Медиэстетик</span>
+                            <span class="footer-separator">·</span>
+                            <span class="footer-domain">Международная сеть клиник</span>
+                        </div>
+                    </div>
+                </a>
+                <!-- КОНЕЦ ОБНОВЛЕННОЙ КАРТОЧКИ -->
+
+            </div>
+        </div>
+    </section>
+
+    <footer id="команда" class="w-full mt-auto py-16 px-6 md:px-12 bg-white border-t border-slate-100 z-10">
+        <div class="max-w-4xl mx-auto text-center flex flex-col gap-8">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-950 leading-tight">
+                Ищу команду, где маркетинг работает на стыке продукта и бизнеса.
+            </h2>
+            <p class="text-lg text-slate-600 leading-relaxed font-medium max-w-2xl mx-auto">
+                Комфортно в growth/performance и в продуктовых задачах — важно, чтобы работа реально двигала цифры. Буду рад пообщаться.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 mt-2">
+                <a href="#" class="text-base font-bold text-white bg-slate-900 px-8 py-3.5 rounded-xl hover:bg-blue-600 transition-colors inline-flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    Написать в Tg
+                </a>
+                <a href="#" class="text-base font-bold text-slate-900 bg-slate-50 border border-slate-200 px-8 py-3.5 rounded-xl hover:bg-slate-100 hover:border-slate-300 transition-colors inline-flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    Резюме
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="case-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
+        <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm cursor-pointer" onclick="closeModal()"></div>
+        <div class="relative bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col transition-transform duration-300 scale-95 transform" id="modal-container">
+            <div class="shrink-0 bg-white border-b border-slate-100 p-6 md:p-8 flex items-center justify-between rounded-t-3xl z-10">
+                <h3 id="modal-title" class="text-2xl md:text-3xl font-extrabold text-slate-950">Название</h3>
+                <button onclick="closeModal()" class="p-2 bg-slate-50 hover:bg-slate-200 rounded-full text-slate-600 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div id="modal-body" class="p-6 md:p-8 overflow-y-auto text-slate-700 leading-relaxed text-base md:text-lg flex-grow scroll-smooth">
+            </div>
+        </div>
+    </div>
+
+    <!-- Модалки скрыты -->
+    <div id="case-b2b" data-title="Agenters: запуск кросс-продукта ОСАГО" class="hidden">
+        <h4 class="text-xl font-bold text-slate-950 mb-3">Контекст</h4>
+        <p class="mb-4">Мы запустили новый кросс-продукт для страховых агентов внутри B2B-платформы Agenters — дополнительную защиту к ОСАГО, которая приносила агенту до +1 050 ₽ с каждого полиса.</p>
+        <p class="mb-8">Продукт выкатили в формате soft launch без продвижения, чтобы не повлиять на конверсию основного потока и посмотреть, как он будет использоваться.</p>
+
+        <h4 class="text-xl font-bold text-slate-950 mb-3">Проблема</h4>
+        <p class="mb-4">Через неделю стало понятно, что продукт почти не используется. Он не стал частью стандартных продаж, потому что:</p>
+        <ul class="list-disc list-inside mb-4 space-y-2 text-slate-800">
+            <li>агенты его не замечали</li>
+            <li>не до конца понимали ценность</li>
+            <li>не понимали, как его предлагать клиенту</li>
+        </ul>
+        <p class="mb-8">Фактически продукт существовал в системе, но не влиял на поведение.</p>
+
+        <h4 class="text-xl font-bold text-slate-950 mb-3">Задача</h4>
+        <p class="mb-8">Сделать так, чтобы продукт начал массово использоваться в стандартных продажах ОСАГО — без изменений основного процесса и без риска для конверсии.</p>
+
+        <h4 class="text-xl font-bold text-slate-950 mb-4">Решение</h4>
+        <p class="mb-4">Я разобрался, почему продукт не используется, и увидел три причины: его не замечают, не понимают ценность и не умеют объяснить клиенту. Вместо изменения продукта мы убрали эти барьеры:</p>
+        <ul class="list-disc list-inside mb-4 space-y-2 text-slate-800">
+            <li>упростили восприятие ценности, привязав её к понятной ситуации с незастрахованным виновником ДТП</li>
+            <li>усилили видимость продукта в момент работы с ним</li>
+            <li>дали простую формулировку, которая помогает предложить его клиенту без подготовки</li>
+        </ul>
+        <p class="mb-8">В итоге продукт перестал восприниматься как “дополнение” и стал понятным элементом продажи.</p>
+
+        <h4 class="text-xl font-bold text-slate-950 mb-3">Результат</h4>
+        <ul class="list-disc list-inside mb-8 space-y-2 font-medium text-slate-800">
+            <li><span class="text-blue-600 font-bold">+12%</span> выручки B2B-направления на существующей базе агентов</li>
+            <li>продукт начал использоваться массово, а не только отдельными агентами</li>
+            <li>сформировался стабильный механизм роста через активацию продукта</li>
+        </ul>
+
+        <div class="bg-blue-50 p-6 md:p-8 rounded-2xl border border-blue-100">
+            <h4 class="text-lg font-bold text-blue-900 mb-2">💡 Инсайт</h4>
+            <p class="text-blue-800 text-base leading-relaxed">Если продукт не используется, проблема чаще не в продукте, а в том, что он не встроен в привычный сценарий действий пользователя.</p>
+        </div>
+    </div>
+
+    <div id="case-t2" data-title="T2: запуск страхового продукта" class="hidden">
+        <h4 class="text-xl font-bold text-slate-950 mb-3">Контекст</h4>
+        <p class="mb-4">T2 запустил страховой продукт внутри своего мобильного приложения как часть стратегии монетизации экосистемы.</p>
+        <p class="mb-8">Моя роль — продуктовый маркетинг со стороны вендора: упаковка продукта, сценарий использования и коммуникации внутри приложения.</p>
+
+        <h4 class="text-xl font-bold text-slate-950 mb-3">Проблема</h4>
+        <p class="mb-4">После запуска продукт не вышел на целевые показатели:</p>
+        <ul class="list-disc list-inside mb-8 space-y-2 text-slate-800">
+            <li>пользователи не доходили до покупки</li>
+            <li>ценность продукта не считывалась в интерфейсе</li>
+            <li>сценарий оформления был перегружен и разрывал путь к покупке</li>
+        </ul>
+        <p class="mb-8">В результате продукт не работал как самостоятельное направление внутри экосистемы.</p>
+
+        <h4 class="text-xl font-bold text-slate-950 mb-3">Задача</h4>
+        <p class="mb-8">Вывести новый страховой продукт на целевые KPI и сделать его устойчивым каналом продаж внутри приложения T2.</p>
+
+        <h4 class="text-xl font-bold text-slate-950 mb-4">Решение</h4>
+        <p class="mb-4">Я сфокусировался на том, как пользователь принимает решение внутри сценария покупки, и убрал ключевые барьеры, мешающие конверсии.</p>
+        <ul class="list-disc list-inside mb-8 space-y-2 text-slate-800">
+            <li>убрал привязку к бонусам оператора и сфокусировал продукт на задаче пользователя — быстро оформить ОСАГО</li>
+            <li>упростил путь до покупки, оставив один основной сценарий действия</li>
+            <li>переработал посадочную страницу, сделав оффер и ввод данных главным фокусом экрана</li>
+            <li>пересобрал коммуникации внутри приложения, чтобы они объясняли ценность через потребность пользователя, а не через продукт партнёра</li>
+        </ul>
+
+        <h4 class="text-xl font-bold text-slate-950 mb-3">Результат</h4>
+        <ul class="list-disc list-inside mb-8 space-y-2 font-medium text-slate-800">
+            <li>конверсия в покупку выросла в <span class="text-blue-600 font-bold">5 раз</span></li>
+            <li>продукт вышел на целевые KPI</li>
+            <li>страховой виджет стал стабильным каналом выручки внутри экосистемы T2</li>
+        </ul>
+
+        <div class="bg-blue-50 p-6 md:p-8 rounded-2xl border border-blue-100">
+            <h4 class="text-lg font-bold text-blue-900 mb-2">💡 Инсайт</h4>
+            <p class="text-blue-800 text-base leading-relaxed">Внутри экосистемных продуктов конверсия чаще всего ломается не на уровне трафика, а на уровне того, как пользователь понимает ценность и насколько прямолинейен путь к действию.</p>
+        </div>
+    </div>
+
+    <div id="case-pizza" data-title="Pizza Hut: рост собственной доставки" class="hidden">
+        <h4 class="text-xl font-bold text-slate-950 mb-3">Контекст</h4>
+        <p class="mb-4">Собственная доставка Pizza Hut уступала агрегаторам по объёму заказов. Маркетинг был разрозненным:</p>
+        <ul class="list-disc list-inside mb-4 space-y-2 text-slate-800">
+            <li>CRM фактически не работала</li>
+            <li>программа лояльности была отключена</li>
+            <li>сайт терял пользователей на ключевых этапах</li>
+        </ul>
+        <p class="mb-8">В результате бизнес не имел устойчивой системы привлечения и возврата клиентов.</p>
+
+        <h4 class="text-xl font-bold text-slate-950 mb-3">Задача</h4>
+        <p class="mb-8">Увеличить транзакции собственной доставки и выстроить управляемую систему роста через все ключевые каналы: привлечение, конверсию и возврат.</p>
+
+        <h4 class="text-xl font-bold text-slate-950 mb-4">Решение</h4>
+        <p class="mb-6">Я сфокусировался не на отдельных инструментах, а на построении системы роста, которая связывает привлечение, конверсию и удержание.</p>
+        
+        <div class="flex flex-col gap-6 mb-8">
+            <div>
+                <strong class="text-slate-950 block mb-1">1. Рост через оффер и привлечение</strong>
+                <p class="text-slate-800">Собрал GTM-стратегию вокруг простого и считываемого оффера — скидки 50%. Цель была не в акции, а в создании сильного входного триггера, который работает в performance-каналах и повышает CTR в перегретой конкуренции.</p>
+            </div>
+            <div>
+                <strong class="text-slate-950 block mb-1">2. CRM как механизм возврата</strong>
+                <p class="text-slate-800 mb-2">Запустил CRM-систему с нуля:</p>
+                <ul class="list-disc list-inside space-y-1 text-slate-800 mb-2">
+                    <li>очистка базы и сегментация пользователей</li>
+                    <li>триггерные цепочки на отток и неактивных пользователей</li>
+                    <li>RFM-сегментация и персонализированные офферы</li>
+                </ul>
+                <p class="text-slate-800">CRM стала не рассылкой, а отдельным каналом повторных заказов.</p>
+            </div>
+            <div>
+                <strong class="text-slate-950 block mb-1">3. Перезапуск лояльности</strong>
+                <p class="text-slate-800 mb-2">Пересобрал механику программы лояльности после её отключения:</p>
+                <ul class="list-disc list-inside space-y-1 text-slate-800">
+                    <li>пересчитал экономику</li>
+                    <li>изменил модель начисления</li>
+                    <li>встроил её в пользовательский путь заказа</li>
+                </ul>
+            </div>
+            <div>
+                <strong class="text-slate-950 block mb-1">4. Оптимизация сайта и воронки</strong>
+                <p class="text-slate-800 mb-2">Провёл аудит и переработал ключевые точки, где пользователи теряли конверсию:</p>
+                <ul class="list-disc list-inside space-y-1 text-slate-800">
+                    <li>упростил путь оформления заказа</li>
+                    <li>убрал барьеры в критических шагах</li>
+                    <li>выстроил последовательную логику взаимодействия</li>
+                </ul>
+            </div>
+            <div>
+                <strong class="text-slate-950 block mb-1">5. Оптимизация каналов привлечения</strong>
+                <p class="text-slate-800 mb-2">Пересобрал медиасплит:</p>
+                <ul class="list-disc list-inside space-y-1 text-slate-800">
+                    <li>отключил неэффективные каналы</li>
+                    <li>перераспределил бюджет в более конверсионные сегменты</li>
+                    <li>отказался от классического ретаргетинга в пользу новых сегментов</li>
+                </ul>
+            </div>
+        </div>
+
+        <h4 class="text-xl font-bold text-slate-950 mb-3">Результат</h4>
+        <ul class="list-disc list-inside mb-8 space-y-2 font-medium text-slate-800">
+            <li><span class="text-blue-600 font-bold">+37,5%</span> конверсии сайта</li>
+            <li><span class="text-blue-600 font-bold">+33%</span> транзакций в Москве, <span class="text-blue-600 font-bold">+25%</span> в Санкт-Петербурге</li>
+            <li><span class="text-blue-600 font-bold">+15%</span> LTV клиентской базы</li>
+            <li><span class="text-blue-600 font-bold">−22%</span> CAC при росте трафика</li>
+        </ul>
+
+        <div class="bg-blue-50 p-6 md:p-8 rounded-2xl border border-blue-100">
+            <h4 class="text-lg font-bold text-blue-900 mb-2">💡 Инсайт</h4>
+            <p class="text-blue-800 text-base leading-relaxed">Рост в доставке еды достигается не точечными улучшениями, а связкой трёх элементов: привлечение, конверсия и возврат. Если один из элементов выпадает — система перестаёт масштабироваться.</p>
+        </div>
+    </div>
+
+    <!-- ОБНОВЛЕННЫЙ ТЕКСТ ЧЕТВЕРТОГО КЕЙСА -->
+    <div id="case-medi" data-title="Медиэстетик: онлайн-привлечение пациентов" class="hidden">
+        <h4 class="text-xl font-bold text-slate-950 mb-3">Контекст</h4>
+        <p class="mb-4">Офтальмологическое направление клиники работало преимущественно через офлайн и партнёрские каналы.</p>
+        <p class="mb-8">Онлайн-присутствие было слабым: сайт не конвертировал, а цифровая воронка как система привлечения пациентов фактически отсутствовала.</p>
+
+        <h4 class="text-xl font-bold text-slate-950 mb-3">Проблема</h4>
+        <p class="mb-4">Пациенты не воспринимали клинику как доступную точку входа через онлайн:</p>
+        <ul class="list-disc list-inside mb-4 space-y-2 text-slate-800">
+            <li>не было понятного сценария обращения через сайт</li>
+            <li>услуги воспринимались как “сложные и дорогие”</li>
+            <li>отсутствовала связка между интересом пользователя и записью на консультацию</li>
+            <li>основной поток зависел от офлайн-партнёров</li>
+        </ul>
+        <p class="mb-8">Фактически продукт не был “упакован” для digital-спроса.</p>
+
+        <h4 class="text-xl font-bold text-slate-950 mb-3">Задача</h4>
+        <p class="mb-8">Перевести офтальмологическое направление в онлайн-воронку и создать стабильный канал привлечения пациентов через digital.</p>
+
+        <h4 class="text-xl font-bold text-slate-950 mb-4">Решение</h4>
+        <p class="mb-6">Я сфокусировался на том, чтобы изменить восприятие услуги и создать понятный вход в продукт через онлайн.</p>
+        
+        <div class="flex flex-col gap-6 mb-8">
+            <div>
+                <strong class="text-slate-950 block mb-1">1. Упаковка продукта в digital-сценарий</strong>
+                <p class="text-slate-800">Перевёл клинику из “медицинского сервиса” в понятный пользовательский сценарий на сайте. Сформировал структуру, где пользователь сначала понимает ситуацию, а затем получает простой путь к записи на консультацию.</p>
+            </div>
+            <div>
+                <strong class="text-slate-950 block mb-1">2. Переупаковка офферов</strong>
+                <p class="text-slate-800">Разработал новые офферы, которые снижали барьер входа в услугу и переводили интерес в действие.</p>
+            </div>
+            <div>
+                <strong class="text-slate-950 block mb-1">3. Создание триггера спроса</strong>
+                <p class="text-slate-800 mb-2">Запустил концепцию “День офтальмологии” — ограниченного по смыслу события, которое объединяло бесплатную консультацию и первичный приём. Это стало ключевым входным продуктом в воронку:</p>
+                <ul class="list-disc list-inside space-y-1 text-slate-800">
+                    <li>снижало барьер первой записи</li>
+                    <li>создавало ощущение ограниченного предложения</li>
+                    <li>увеличивало конверсию из интереса в обращение</li>
+                </ul>
+            </div>
+            <div>
+                <strong class="text-slate-950 block mb-1">4. Сборка онлайн-воронки</strong>
+                <p class="text-slate-800">Связал сайт, офферы и запись на консультацию в единую систему привлечения пациентов из digital-каналов.</p>
+            </div>
+        </div>
+
+        <h4 class="text-xl font-bold text-slate-950 mb-3">Результат</h4>
+        <ul class="list-disc list-inside mb-8 space-y-2 font-medium text-slate-800">
+            <li><span class="text-blue-600 font-bold">+41%</span> выручки направления офтальмологии</li>
+            <li>рост количества первичных обращений через онлайн</li>
+            <li>формирование стабильного digital-канала привлечения пациентов</li>
+        </ul>
+
+        <div class="bg-blue-50 p-6 md:p-8 rounded-2xl border border-blue-100">
+            <h4 class="text-lg font-bold text-blue-900 mb-2">💡 Инсайт</h4>
+            <p class="text-blue-800 text-base leading-relaxed">В медицинских услугах ключевой барьер роста — не трафик, а восприятие доступности. Когда услугу правильно упаковать в понятный сценарий входа, спрос можно не генерировать, а активировать.</p>
+        </div>
+    </div>
+    <!-- КОНЕЦ ОБНОВЛЕННОГО ТЕКСТА ЧЕТВЕРТОГО КЕЙСА -->
+
+    <script>
+        function openModal(caseId) {
+            const modal = document.getElementById('case-modal');
+            const contentDiv = document.getElementById(caseId);
+            const modalBody = document.getElementById('modal-body');
+            
+            if (!contentDiv) return;
+
+            document.getElementById('modal-title').innerText = contentDiv.getAttribute('data-title');
+            modalBody.innerHTML = contentDiv.innerHTML;
+            
+            modalBody.scrollTop = 0;
+
+            modal.classList.remove('hidden');
+            
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                document.getElementById('modal-container').classList.remove('scale-95');
+                document.getElementById('modal-container').classList.add('scale-100');
+            }, 10);
+
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('case-modal');
+            
+            modal.classList.add('opacity-0');
+            document.getElementById('modal-container').classList.remove('scale-100');
+            document.getElementById('modal-container').classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+    </script>
+</body>
+</html>
