@@ -175,9 +175,15 @@
 <body class="bg-white text-slate-900 antialiased flex flex-col min-h-screen relative overflow-x-hidden">
 
     <header class="w-full pt-16 pb-12 px-6 md:px-12 z-10">
-        <div class="max-w-7xl mx-auto relative flex flex-col lg:block">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row-reverse items-start lg:items-stretch lg:justify-between gap-8 xl:gap-16">
             
-            <div class="w-full lg:w-[calc(100%-350px)] xl:w-[calc(100%-400px)] flex flex-col">
+            <div class="w-48 sm:w-64 lg:w-[306px] xl:w-[357px] shrink-0 flex flex-col justify-end">
+                <div class="w-full aspect-[3/4] rounded-[1.5rem] lg:rounded-[2rem] overflow-hidden bg-slate-100 border border-slate-200 shadow-sm flex items-center justify-center">
+                    <img src="images/photo.jpg" alt="Вадим Щеглеватых" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <div class="flex-1 flex flex-col min-w-0">
                 <h1 class="text-[2.5rem] sm:text-[4.5rem] md:text-[5.4rem] lg:text-[5.4rem] xl:text-[6.6rem] 2xl:text-[7.8rem] font-black uppercase tracking-tight text-slate-950 mb-8 lg:mb-10 leading-none">
                     ВАДИМ<br />ЩЕГЛЕВАТЫХ
                 </h1>
@@ -199,7 +205,7 @@
                 
                     <div class="w-full sm:w-auto flex items-center gap-2.5 bg-slate-50 text-slate-950 px-5 py-3 rounded-full font-bold text-sm md:text-base cursor-default">
                         <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         <span>Growth</span>
                     </div>
@@ -208,12 +214,6 @@
                 <p class="text-xl md:text-2xl text-slate-700 leading-relaxed max-w-2xl font-medium m-0">
                     <span class="font-extrabold text-slate-950">Senior Product Marketing Manager.</span>
                 </p>
-            </div>
-
-            <div class="mt-8 lg:mt-0 lg:absolute lg:bottom-0 lg:right-0 w-48 sm:w-64 lg:w-[306px] xl:w-[357px] lg:h-full flex flex-col justify-end">
-                <div class="w-full aspect-[3/4] max-h-full rounded-[1.5rem] lg:rounded-[2rem] overflow-hidden bg-slate-100 border border-slate-200 shadow-sm flex items-center justify-center">
-                    <img src="images/photo.jpg" alt="Вадим Щеглеватых" class="w-full h-full object-cover">
-                </div>
             </div>
 
         </div>
@@ -299,7 +299,7 @@
 
                     <div class="case-footer">
                         <div class="footer-logo">
-                            <img src="images/medi.png" alt="Медиэстетик">
+                            <img src="images/Medii.png" alt="Медиэстетик">
                         </div>
                         <div class="footer-meta">
                             <span class="footer-company">Медиэстетик</span>
